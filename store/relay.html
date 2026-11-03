@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><title>relay</title><body>relay<script>
+// hands store assets to App Store Connect, which can't fetch them itself
+const files=(new URLSearchParams(location.search).get('f')||'').split(',').filter(Boolean);
+(async()=>{const out=[];for(const f of files){const r=await fetch(f,{cache:'no-store'});out.push({name:f.split('/').pop(),type:'image/png',buf:await r.arrayBuffer()});}
+ const t=window.opener||window.parent; t.postMessage({relay:out},'https://appstoreconnect.apple.com'); document.body.textContent='sent '+out.length;})();
+</script>
