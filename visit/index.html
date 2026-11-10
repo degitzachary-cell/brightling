@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A Brightling wants to visit</title>
+<meta name="description" content="Someone's Brightling wants to come over. Open the link on your phone and it turns up in your world.">
+<meta name="apple-itunes-app" content="app-id=6830009358">
+<meta property="og:title" content="A Brightling wants to visit">
+<meta property="og:description" content="Open this on your phone and it turns up in your world. Brightling is a pet made of your month.">
+<meta property="og:image" content="https://degitzachary-cell.github.io/brightling/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<main>
+  <div class="hero">
+    <img src="../icon.png" alt="Brightling app icon: a fox curled up asleep">
+    <h1>Someone's coming over</h1>
+    <p style="font-size:22px">A friend's Brightling wants to visit yours.</p>
+    <a class="badge" id="open" href="#">Open in Brightling</a>
+    <p class="muted" style="margin-top:14px">Don't have it yet? Get Brightling, then tap the link again.</p>
+    <a class="badge" href="https://apps.apple.com/app/id6830009358" style="margin-top:6px">Get it on the App Store</a>
+  </div>
+  <div class="card">
+    <p style="margin:0">After the first visit, your animals drop in on each other by themselves. Only the animal travels, never anyone's Health data.</p>
+  </div>
+  <footer><a href="../">Brightling</a> · <a href="../privacy/">Privacy</a></footer>
+</main>
+<script>
+  (function(){
+    var id=(new URLSearchParams(location.search).get('id')||'').toLowerCase();
+    var ok=/^v[0-9a-f]{16}$/.test(id);
+    var link=ok?'brightling://visit/'+id:'brightling://';
+    var btn=document.getElementById('open'); btn.href=link;
+    // try the app straight away on phones; the buttons stay for when that doesn't happen
+    if(ok&&/iPhone|iPad|Android/i.test(navigator.userAgent)) setTimeout(function(){ location.href=link; },300);
+  })();
+</script>
+</body>
+</html>
